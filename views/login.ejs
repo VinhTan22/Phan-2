@@ -1,0 +1,18 @@
+<%- include('partials/header') %>
+
+<h2>Đăng nhập</h2>
+
+<form method="post" action="/auth/login">
+  <div class="mb-3">
+    <label class="form-label">Tên đăng nhập</label>
+    <input class="form-control" name="username" required />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Mật khẩu</label>
+    <input class="form-control" type="password" name="password" required />
+  </div>
+  <button class="btn btn-primary" type="submit">Đăng nhập</button>
+  <a class="btn btn-link" href="/auth/forgot">Quên mật khẩu?</a>
+</form>
+
+<%- include('partials/footer') %>

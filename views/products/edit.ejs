@@ -1,0 +1,38 @@
+<%- include("../partials/header", { title: "Sửa Sản phẩm" }) %>
+
+<div class="container">
+  <h2 class="mb-3">Sửa Sản phẩm</h2>
+
+  <form method="post" action="/products/<%= product._id %>/edit">
+    <div class="mb-3">
+      <label class="form-label">Tên</label>
+      <input type="text" name="name" class="form-control" value="<%= product.name %>" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Giá</label>
+      <input type="number" name="price" class="form-control" step="0.01" value="<%= product.price %>" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Số lượng</label>
+      <input type="number" name="quantity" class="form-control" value="<%= product.quantity %>" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Nhà cung cấp</label>
+      <select name="supplier" class="form-select">
+        <% suppliers.forEach(s => { %>
+          <option value="<%= s._id %>" <%= product.supplier && product.supplier.toString() === s._id.toString() ? "selected" : "" %>>
+            <%= s.name %>
+          </option>
+        <% }) %>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Cập nhật</button>
+    <a href="/products" class="btn btn-secondary">Quay lại</a>
+  </form>
+</div>
+
+<%- include("../partials/footer") %>

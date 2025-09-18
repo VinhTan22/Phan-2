@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+
+<h2>Quên mật khẩu</h2>
+
+<form method="post" action="/auth/forgot">
+  <div class="mb-3">
+    <label class="form-label">Email đăng ký</label>
+    <input class="form-control" type="email" name="email" required />
+  </div>
+  <button class="btn btn-warning" type="submit">Gửi hướng dẫn</button>
+</form>
+
+<%- include('partials/footer') %>

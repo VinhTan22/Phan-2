@@ -1,0 +1,41 @@
+<%- include("../partials/header", { title: "Nhà cung cấp" }) %>
+
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Danh sách Nhà cung cấp</h2>
+    <a href="/suppliers/new" class="btn btn-primary">+ Thêm mới</a>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Tên</th>
+        <th>Địa chỉ</th>
+        <th>Điện thoại</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (suppliers.length === 0) { %>
+        <tr>
+          <td colspan="4" class="text-center">Chưa có nhà cung cấp nào</td>
+        </tr>
+      <% } else { %>
+        <% suppliers.forEach(s => { %>
+          <tr>
+            <td><%= s.name %></td>
+            <td><%= s.address %></td>
+            <td><%= s.phone %></td>
+            <td>
+              <a href="/suppliers/<%= s._id %>/edit" class="btn btn-sm btn-warning">Sửa</a>
+              <a href="/suppliers/<%= s._id %>/delete" class="btn btn-sm btn-danger"
+                 onclick="return confirm('Xóa nhà cung cấp này?')">Xóa</a>
+            </td>
+          </tr>
+        <% }) %>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<%- include("../partials/footer") %>

@@ -1,0 +1,43 @@
+<%- include("../partials/header", { title: "Sản phẩm" }) %>
+
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Danh sách Sản phẩm</h2>
+    <a href="/products/new" class="btn btn-primary">+ Thêm mới</a>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Tên</th>
+        <th>Giá</th>
+        <th>Số lượng</th>
+        <th>Nhà cung cấp</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (products.length === 0) { %>
+        <tr>
+          <td colspan="5" class="text-center">Chưa có sản phẩm nào</td>
+        </tr>
+      <% } else { %>
+        <% products.forEach(p => { %>
+          <tr>
+            <td><%= p.name %></td>
+            <td><%= p.price %></td>
+            <td><%= p.quantity %></td>
+            <td><%= p.supplier ? p.supplier.name : "Không rõ" %></td>
+            <td>
+              <a href="/products/<%= p._id %>/edit" class="btn btn-sm btn-warning">Sửa</a>
+              <a href="/products/<%= p._id %>/delete" class="btn btn-sm btn-danger"
+                 onclick="return confirm('Xóa sản phẩm này?')">Xóa</a>
+            </td>
+          </tr>
+        <% }) %>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<%- include("../partials/footer") %>
